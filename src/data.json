@@ -1,0 +1,74 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "category": "Mobile Phones",
+      "brand": "Apple",
+      "model": "iPhone",
+      "variant": "128GB"
+    },
+    {
+      "id": 2,
+      "category": "Mobile Phones",
+      "brand": "Apple",
+      "model": "iPhone",
+      "variant": "256GB"
+    },
+    {
+      "id": 3,
+      "category": "Mobile Phones",
+      "brand": "Apple",
+      "model": "iPhone",
+      "variant": "512GB"
+    },
+    {
+      "id": 4,
+      "category": "Mobile Phones",
+      "brand": "Xiaomi",
+      "model": "A3",
+      "variant": "Base"
+    },
+    {
+      "id": 5,
+      "category": "Mobile Phones",
+      "brand": "Xiaomi",
+      "model": "A3",
+      "variant": "Light"
+    },
+    {
+      "id": 6,
+      "category": "Computers",
+      "brand": "Apple",
+      "model": "MacBook Pro",
+      "variant": "13.3 inch"
+    },
+    {
+      "id": 7,
+      "category": "Computers",
+      "brand": "Apple",
+      "model": "MacBook Pro",
+      "variant": "14 inch"
+    },
+    {
+      "id": 8,
+      "category": "Computers",
+      "brand": "Apple",
+      "model": "MacBook Pro",
+      "variant": "16 inch"
+    },
+    {
+      "id": 9,
+      "category": "Computers",
+      "brand": "Dell",
+      "model": "Inspiron",
+      "variant": "3000 Series"
+    },
+    {
+      "id": 10,
+      "category": "Computers",
+      "brand": "Dell",
+      "model": "Inspiron",
+      "variant": "5000 Series"
+    }
+  ]
+}
