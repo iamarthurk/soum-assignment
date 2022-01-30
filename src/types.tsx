@@ -10,3 +10,9 @@ export interface ProductMetadata {
   variant: string;
   [key: string]: string;
 }
+
+export interface ProductTreeNode {
+  id: string;
+  value: string;
+  type: string;
+}

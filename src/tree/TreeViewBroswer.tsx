@@ -1,35 +1,45 @@
 import React from 'react';
-import { Product } from '../types';
+import { Product, ProductTreeNode } from '../types';
 import { Node } from '../utils/tree-impl';
-import { buildTree } from '../utils/build-tree';
 import RecursiveRenderer from './RecursiveRenderer';
 
 interface TreeViewBrowserProps {
-  products: Product[];
-  fieldHierarchy: string[];
+  tree: Node<ProductTreeNode>;
   renderItemAs?: React.ComponentType<TreeItemProps>;
+  selectedNodeIds: string[];
+  onItemToggle: (node: Node<ProductTreeNode>) => void;
 }
 
 export interface TreeItemProps {
-  title: string;
+  node: Node<ProductTreeNode>;
   level: number;
+  isSelected: boolean;
+  onToggle: (node: Node<ProductTreeNode>) => void;
 }
 
 export interface RecursiveRendererProps {
-  node: Node<string>;
+  node: Node<ProductTreeNode>;
   level: number;
   renderItemAs: React.ComponentType<TreeItemProps> | undefined;
+  selectedNodeIds: string[];
+  onItemToggle: (node: Node<ProductTreeNode>) => void;
 }
 
 const TreeViewBrowser: React.FC<TreeViewBrowserProps> = (props) => {
-  const tree = buildTree(props.products, props.fieldHierarchy);
-
+  // Should skip the root
   return (
-    <RecursiveRenderer
-      renderItemAs={props.renderItemAs}
-      node={tree}
-      level={0}
-    />
+    <>
+      {props.tree.getChildren().map((node) => (
+        <RecursiveRenderer
+          selectedNodeIds={props.selectedNodeIds}
+          onItemToggle={props.onItemToggle}
+          key={node.getValue().id}
+          renderItemAs={props.renderItemAs}
+          node={node}
+          level={0}
+        />
+      ))}
+    </>
   );
 };
 

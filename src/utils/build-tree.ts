@@ -1,12 +1,13 @@
-import { Product } from '../types';
+import { Product, ProductTreeNode } from '../types';
 import { Node } from './tree-impl';
 
 // Complexity: O(n^2)
-export function buildTree(
-  products: Product[],
-  fieldHierarchy: string[],
-): Node<string> {
-  const root = new Node('-');
+export function buildTree(products: Product[], fieldHierarchy: string[]) {
+  const root = new Node<ProductTreeNode>({
+    id: 'root',
+    type: 'root',
+    value: '-',
+  });
 
   for (let product of products) {
     let currentNode = root;
@@ -16,10 +17,16 @@ export function buildTree(
 
       let existingNode = currentNode
         .getChildren()
-        .find((child) => child.getValue() === value);
+        .find((child) => child.getValue().value === value);
 
       if (typeof existingNode === 'undefined') {
-        existingNode = new Node(value);
+        existingNode = new Node({
+          id: `${currentNode.getValue().id}-${field}-${value
+            .toLocaleLowerCase()
+            .replace(/\s+/g, '-')}`,
+          type: field,
+          value,
+        });
         currentNode.addChild(existingNode);
       }
 

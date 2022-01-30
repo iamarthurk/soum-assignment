@@ -6,6 +6,8 @@ const RecursiveRenderer: React.FC<RecursiveRendererProps> = ({
   node,
   level,
   renderItemAs,
+  selectedNodeIds,
+  onItemToggle,
 }) => {
   const nodeChildren = node.getChildren();
 
@@ -15,12 +17,20 @@ const RecursiveRenderer: React.FC<RecursiveRendererProps> = ({
     typeof renderItemAs === 'undefined' ? TreeItemDefault : renderItemAs;
 
   return (
-    <ItemRenderer level={level} title={node.getValue()}>
+    <>
+      <ItemRenderer
+        isSelected={selectedNodeIds.indexOf(node.getValue().id) !== -1}
+        onToggle={onItemToggle}
+        level={level}
+        node={node}
+      />
       {nodeChildren.length
         ? nodeChildren.map((child) => {
             return (
               <RecursiveRenderer
-                key={child.getValue()}
+                selectedNodeIds={selectedNodeIds}
+                onItemToggle={onItemToggle}
+                key={child.getValue().id}
                 renderItemAs={renderItemAs}
                 node={child}
                 level={level + 1}
@@ -28,7 +38,7 @@ const RecursiveRenderer: React.FC<RecursiveRendererProps> = ({
             );
           })
         : null}
-    </ItemRenderer>
+    </>
   );
 };
 

@@ -7,6 +7,10 @@ export class Node<T> {
     this.value = value;
   }
 
+  getParent() {
+    return this.parent;
+  }
+
   setParentNode(node: Node<T>) {
     this.parent = node;
   }
