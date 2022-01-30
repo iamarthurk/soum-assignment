@@ -1,5 +1,5 @@
 import React from 'react';
-import { Product, ProductTreeNode } from '../types';
+import { ProductTreeNode } from '../types';
 import { Node } from '../utils/tree-impl';
 import RecursiveRenderer from './RecursiveRenderer';
 

@@ -14,5 +14,6 @@ export interface ProductMetadata {
 export interface ProductTreeNode {
   id: string;
   value: string;
+  label: string;
   type: string;
 }

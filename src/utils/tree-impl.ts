@@ -24,6 +24,10 @@ export class Node<T> {
     return this.value;
   }
 
+  setValue(value: T) {
+    this.value = value;
+  }
+
   getChildren() {
     return this.children;
   }

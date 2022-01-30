@@ -9,6 +9,7 @@ test('renders title prop content', () => {
     id: 'root',
     value: 'Hello World!',
     type: 'root',
+    label: 'root',
   });
 
   render(

@@ -89,6 +89,24 @@
         "model": "Inspiron",
         "variant": "5000 Series"
       }
+    },
+    {
+      "id": 11,
+      "metadata": {
+        "category": "Computers",
+        "brand": "Dell",
+        "model": "Inspiron",
+        "variant": "5000 Series"
+      }
+    },
+    {
+      "id": 12,
+      "metadata": {
+        "category": "Computers",
+        "brand": "Dell",
+        "model": "Inspiron",
+        "variant": "5000 Series"
+      }
     }
   ],
   "fieldHierarchy": ["category", "brand", "model", "variant"]

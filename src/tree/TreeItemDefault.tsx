@@ -1,5 +1,13 @@
 import React from 'react';
+import cntl from 'cntl';
 import { TreeItemProps } from './TreeViewBroswer';
+
+const labelClassName = cntl`
+  text-xs
+  ml-1
+  mb-2
+  text-gray-400
+`;
 
 const TreeItemDefault: React.FC<TreeItemProps> = ({
   node,
@@ -7,7 +15,7 @@ const TreeItemDefault: React.FC<TreeItemProps> = ({
   isSelected,
   onToggle,
 }) => {
-  const value = node.getValue();
+  const nodeValue = node.getValue();
 
   const handleChange = () => {
     onToggle(node);
@@ -15,15 +23,18 @@ const TreeItemDefault: React.FC<TreeItemProps> = ({
 
   return (
     <div style={{ marginLeft: level * 20 }}>
-      <input
-        type="checkbox"
-        id={value.id}
-        onChange={handleChange}
-        checked={isSelected}
-      />
-      <label className="ml-2" htmlFor={value.id}>
-        {node.getValue().value}
-      </label>
+      <div>
+        <input
+          type="checkbox"
+          id={nodeValue.id}
+          onChange={handleChange}
+          checked={isSelected}
+        />
+        <label className="ml-2" htmlFor={nodeValue.id}>
+          {nodeValue.value}
+        </label>
+      </div>
+      <div className={labelClassName}>{nodeValue.label}</div>
     </div>
   );
 };

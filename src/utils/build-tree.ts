@@ -1,12 +1,18 @@
 import { Product, ProductTreeNode } from '../types';
+import uniqid from 'uniqid';
 import { Node } from './tree-impl';
 
 // Complexity: O(n^2)
-export function buildTree(products: Product[], fieldHierarchy: string[]) {
+export function buildTree(
+  products: Product[],
+  fieldHierarchy: string[],
+  createLabelFunc: (products: Product[], node: Node<ProductTreeNode>) => string,
+) {
   const root = new Node<ProductTreeNode>({
     id: 'root',
     type: 'root',
     value: '-',
+    label: '',
   });
 
   for (let product of products) {
@@ -21,13 +27,20 @@ export function buildTree(products: Product[], fieldHierarchy: string[]) {
 
       if (typeof existingNode === 'undefined') {
         existingNode = new Node({
-          id: `${currentNode.getValue().id}-${field}-${value
-            .toLocaleLowerCase()
-            .replace(/\s+/g, '-')}`,
+          id: uniqid(),
           type: field,
           value,
+          label: '',
         });
+
+        // Important to set node parent
+        // Which can be useful for createLabelFunc
         currentNode.addChild(existingNode);
+
+        existingNode.setValue({
+          ...existingNode.getValue(),
+          label: createLabelFunc(products, existingNode),
+        });
       }
 
       currentNode = existingNode;

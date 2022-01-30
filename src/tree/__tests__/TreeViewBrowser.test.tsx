@@ -3,9 +3,10 @@ import { render, screen } from '@testing-library/react';
 import TreeViewBroswer from '../TreeViewBroswer';
 import data from '../../data.json';
 import { buildTree } from '../../utils/build-tree';
+import { createLabel } from '../../utils/create-label';
 
 test('renders title prop content', () => {
-  const tree = buildTree(data.products, data.fieldHierarchy);
+  const tree = buildTree(data.products, data.fieldHierarchy, createLabel);
 
   render(
     <TreeViewBroswer
